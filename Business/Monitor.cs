@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Models;
 
 namespace Business
 {
     public class ProcessMonitor
     {
+        // Interval for checking - 10 seconds
+        private const int CHEACKING_INTERVAL = 10000;
         private readonly List<ProcessModel> _processesForCilling;
+
         public ProcessMonitor(List<ProcessModel> processes)
         {
             _processesForCilling = processes;
         }
 
+        /// <summary>
+        /// Start monitoring and killing founded processes from list
+        /// </summary>
+        /// <returns>Nothing, just loop</returns>
         public async Task StartMonitoring()
         {
-            // Interval for checking - 10 seconds
-            const int CHEACKING_INTERVAL = 10000;
-            int chekingCount = 1;
-
             Console.WriteLine($"Monitoring started! {DateTime.UtcNow}");
 
             while (true)
@@ -45,12 +43,14 @@ namespace Business
                         KillTheProcess(currentProcess);
                     }
                 }
-
-                chekingCount++;
                 await Task.Delay(CHEACKING_INTERVAL);
             }
         }
 
+        /// <summary>
+        /// Kill process method
+        /// </summary>
+        /// <param name="processForKill">Process for killing</param>
         private static void KillTheProcess(Process processForKill)
         {
             try

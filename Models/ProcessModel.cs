@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Diagnostics;
 namespace Models
 {
     public class ProcessModel
@@ -16,6 +10,10 @@ namespace Models
             ProcessName = processName;
         }
 
+        /// <summary>
+        /// Check process running right now
+        /// </summary>
+        /// <returns>true/false</returns>
         public bool IsProcessRunning()
         {
             // Try to get all existing processes by name
