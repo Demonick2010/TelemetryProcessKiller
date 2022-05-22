@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# S3626: Jump statements should not be redundant
+dotnet_diagnostic.S3626.severity = none
+
+# ET001: Type name does not match file name
+dotnet_diagnostic.ET001.severity = none
+
+# S2190: Recursion should not be infinite
+dotnet_diagnostic.S2190.severity = none
