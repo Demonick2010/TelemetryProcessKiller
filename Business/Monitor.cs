@@ -19,7 +19,7 @@ namespace Business
         public async Task StartMonitoring()
         {
             // Interval for checking - 10 seconds
-            const int chekingInterval = 10000;
+            const int CHEACKING_INTERVAL = 10000;
             int chekingCount = 1;
 
             Console.WriteLine($"Monitoring started! {DateTime.UtcNow}");
@@ -47,7 +47,7 @@ namespace Business
                 }
 
                 chekingCount++;
-                await Task.Delay(chekingInterval);
+                await Task.Delay(CHEACKING_INTERVAL);
             }
         }
 
