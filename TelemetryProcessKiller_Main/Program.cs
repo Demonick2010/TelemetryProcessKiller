@@ -11,7 +11,7 @@ List<ProcessModel> killingProcessList = new()
 // Create monitor
 ProcessMonitor monitor = new(killingProcessList);
 
-Console.WriteLine($"Loaded {killingProcessList.Count} process(es) for monitoring and killing. {DateTime.UtcNow}");
+Console.WriteLine($"Loaded {killingProcessList.Count} process(es) for monitoring and killing. {DateTime.Now}");
 
 // Start processes monitoring
 await monitor.StartMonitoring();

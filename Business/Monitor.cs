@@ -8,6 +8,7 @@ namespace Business
         // Interval for checking - 10 seconds
         private const int CHEACKING_INTERVAL = 10000;
         private readonly List<ProcessModel> _processesForCilling;
+        private static int _count = 0;
 
         public ProcessMonitor(List<ProcessModel> processes)
         {
@@ -20,7 +21,7 @@ namespace Business
         /// <returns>Nothing, just loop</returns>
         public async Task StartMonitoring()
         {
-            Console.WriteLine($"Monitoring started! {DateTime.UtcNow}");
+            Console.WriteLine($"Monitoring started! {DateTime.Now}");
 
             while (true)
             {
@@ -70,9 +71,10 @@ namespace Business
                     StartInfo = info
                 };
                 killProcess.Start();
-
+                _count++;
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Process {processForKill} with ID: {processForKill.Id} killing sucessful! {DateTime.UtcNow}");
+                Console.WriteLine($"Process {processForKill} with ID: {processForKill.Id} killing sucessful! {DateTime.Now}");
+                Console.WriteLine($"Total killed process count: {_count}");
                 Console.ResetColor();
             }
             catch (Exception ex)
